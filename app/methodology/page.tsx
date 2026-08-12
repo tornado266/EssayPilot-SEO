@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { BottomCta, ContentHero, ContentSection } from "../_components/content-page";
 
 export const metadata: Metadata = {
@@ -52,6 +53,16 @@ export default function MethodologyPage() {
         <blockquote className="method-quote">
           EssayPilot 希望留下的不是一篇由AI写好的文章，而是用户在下一篇仍能主动调用的判断方法。
         </blockquote>
+      </ContentSection>
+      <ContentSection kicker="理解评分维度" title="查看系统判断背后的两项核心标准。">
+        <div className="related-grid related-grid-two">
+          <Link className="related-card" href="/task-2/task-response">
+            <span>Task Response</span><h3>如何判断题目回应与观点发展？</h3><p>了解完整回应、相关观点和有效支持的区别。</p>
+          </Link>
+          <Link className="related-card" href="/task-2/coherence-cohesion">
+            <span>Coherence &amp; Cohesion</span><h3>如何判断文章是否容易跟随？</h3><p>了解逻辑顺序、分段、指代与衔接的关系。</p>
+          </Link>
+        </div>
       </ContentSection>
       <BottomCta title="了解评分边界，也更有效地使用反馈。" />
     </main>

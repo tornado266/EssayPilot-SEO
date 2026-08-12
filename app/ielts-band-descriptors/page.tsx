@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { BottomCta, ContentHero, ContentSection } from "../_components/content-page";
 
 export const metadata: Metadata = {
@@ -56,6 +57,16 @@ export default function BandDescriptorsPage() {
           <article><b>高级词越多越好</b><p>不准确的“大词”会破坏自然度和清晰度。准确、恰当、可控制更重要。</p></article>
           <article><b>连接词越多越连贯</b><p>真正的连贯来自信息关系和段落推进，而不是每句话都加显性的连接词。</p></article>
           <article><b>长句越多语法分越高</b><p>复杂句需要服务于意思。范围与准确性必须同时存在，失控的长句不会形成优势。</p></article>
+        </div>
+      </ContentSection>
+      <ContentSection kicker="分项阅读" title="把抽象标准拆成可检查的问题。" muted>
+        <div className="related-grid related-grid-two">
+          <Link className="related-card" href="/task-2/task-response">
+            <span>Task Response</span><h3>题目回应、立场与论证怎么判断？</h3><p>查看6分与7分的具体差别和提交前清单。</p>
+          </Link>
+          <Link className="related-card" href="/task-2/coherence-cohesion">
+            <span>Coherence &amp; Cohesion</span><h3>逻辑、段落和衔接怎么配合？</h3><p>诊断信息顺序，而不是机械增加连接词。</p>
+          </Link>
         </div>
       </ContentSection>
       <BottomCta title="把抽象标准，变成这一稿的具体修改。" />

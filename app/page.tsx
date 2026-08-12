@@ -24,6 +24,33 @@ const steps = [
   ["完成二稿", "基于反馈独立重写，再比较前后变化。"],
 ];
 
+const writingGuides = [
+  {
+    href: "/task-2/task-response",
+    label: "评分维度",
+    title: "Task Response：6分和7分差在哪里？",
+    text: "看清完整回应、立场发展与论证支持分别在判断什么。",
+  },
+  {
+    href: "/task-2/coherence-cohesion",
+    label: "评分维度",
+    title: "Coherence & Cohesion：逻辑与衔接",
+    text: "区分信息推进与语言衔接，避免用连接词掩盖结构问题。",
+  },
+  {
+    href: "/guides/ielts-writing-6-to-6-5",
+    label: "训练指南",
+    title: "写作6分到6.5分，先改哪三个问题？",
+    text: "按任务回应、结构和语言准确性安排一次练习的优先级。",
+  },
+  {
+    href: "/guides/how-to-rewrite-ielts-essay",
+    label: "训练指南",
+    title: "批改以后，怎样真正完成第二稿？",
+    text: "把反馈筛成动作，独立重写，再对照两稿留下可复用的方法。",
+  },
+];
+
 export default function Home() {
   return (
     <main>
@@ -154,6 +181,28 @@ export default function Home() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section className="section shell" aria-labelledby="writing-guides-title">
+        <div className="section-heading split-heading">
+          <div>
+            <p className="eyebrow">写作指南</p>
+            <h2 id="writing-guides-title">先把一个问题弄清，再回到自己的作文。</h2>
+          </div>
+          <p>
+            从评分维度到二稿步骤，这些指南提供具体解释、训练示例和提交前检查方法。
+          </p>
+        </div>
+        <div className="guide-grid">
+          {writingGuides.map((guide) => (
+            <Link className="guide-card" href={guide.href} key={guide.href}>
+              <span>{guide.label}</span>
+              <h3>{guide.title}</h3>
+              <p>{guide.text}</p>
+              <b>阅读全文 <span aria-hidden="true">→</span></b>
+            </Link>
+          ))}
         </div>
       </section>
 

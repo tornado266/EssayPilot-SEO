@@ -56,9 +56,16 @@ export default function Task2ScorePage() {
       </ContentSection>
 
       <ContentSection kicker="继续了解" title="评分标准不是四句简短定义。">
-        <div className="link-panel">
-          <div><h3>进一步阅读公开评分标准</h3><p>按分数段理解四项维度中的典型表现与差异。</p></div>
-          <Link className="text-link" href="/ielts-band-descriptors">查看评分标准解析 →</Link>
+        <div className="related-grid">
+          <Link className="related-card" href="/task-2/task-response">
+            <span>TR 专题</span><h3>Task Response 如何判断完整回应与论证发展？</h3><p>具体比较6分和7分常见表现。</p>
+          </Link>
+          <Link className="related-card" href="/task-2/coherence-cohesion">
+            <span>CC 专题</span><h3>逻辑推进与连接词使用有什么区别？</h3><p>用段落诊断理解连贯与衔接。</p>
+          </Link>
+          <Link className="related-card" href="/ielts-band-descriptors">
+            <span>总览</span><h3>进一步阅读公开评分标准</h3><p>按分数段理解四项维度的典型差异。</p>
+          </Link>
         </div>
       </ContentSection>
       <BottomCta title="知道分数，更要知道从哪里开始改。" />

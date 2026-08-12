@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { BottomCta, ContentHero, ContentSection } from "../../_components/content-page";
 
 export const metadata: Metadata = {
@@ -71,6 +72,16 @@ export default function BandExamplePage() {
             <li>通过什么机制产生结果？</li>
             <li>有没有需要限定的适用范围？</li>
           </ol>
+        </div>
+      </ContentSection>
+      <ContentSection kicker="接着练" title="从案例回到自己的修改流程。">
+        <div className="related-grid related-grid-two">
+          <Link className="related-card" href="/guides/ielts-writing-6-to-6-5">
+            <span>6分到6.5分</span><h3>一次练习应该先改哪三个问题？</h3><p>学习判断论证、结构和语言准确性的优先级。</p>
+          </Link>
+          <Link className="related-card" href="/guides/how-to-rewrite-ielts-essay">
+            <span>二稿指南</span><h3>把批改落实成一篇独立完成的二稿</h3><p>按五步流程筛选反馈、补全论证并对照两稿。</p>
+          </Link>
         </div>
       </ContentSection>
       <BottomCta title="真正的进步，发生在你亲手写出的第二稿。" />

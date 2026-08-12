@@ -8,22 +8,37 @@ export function ContentHero({
   title,
   intro,
   label = "免费开始训练",
+  breadcrumbs,
+  updated,
 }: {
   eyebrow: string;
   title: string;
   intro: string;
   label?: string;
+  breadcrumbs?: Array<{ label: string; href?: string }>;
+  updated?: string;
 }) {
+  const trail = breadcrumbs ?? [
+    { label: "EssayPilot", href: "/" },
+    { label: eyebrow },
+  ];
+
   return (
     <section className="content-hero">
       <div className="shell content-hero-inner">
         <div>
           <div className="breadcrumb">
-            <Link href="/">EssayPilot</Link><span>/</span><span>{eyebrow}</span>
+            {trail.map((item, index) => (
+              <span className="breadcrumb-item" key={`${item.label}-${index}`}>
+                {index > 0 && <span aria-hidden="true">/</span>}
+                {item.href ? <Link href={item.href}>{item.label}</Link> : <span>{item.label}</span>}
+              </span>
+            ))}
           </div>
           <p className="eyebrow">{eyebrow}</p>
           <h1>{title}</h1>
           <p className="content-lead">{intro}</p>
+          {updated && <p className="updated-date">最后更新：{updated}</p>}
           <a className="button button-primary" href={appUrl} target="_blank" rel="noreferrer">
             {label} <span aria-hidden="true">↗</span>
           </a>

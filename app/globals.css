@@ -290,6 +290,25 @@ nav a[href="/methodology"] { padding-bottom: 5px; border-bottom: 2px solid #a87c
 .reading-order span { color: var(--ink); font-size: 13px; font-weight: 700; line-height: 1.5; }
 .tutorial-note { max-width: 820px; margin: 24px 0 0; padding-left: 16px; border-left: 3px solid #a87c32; color: var(--muted); font-size: 13px; line-height: 1.8; }
 .tutorial-option-action { margin-top: 22px; }
+.workspace-guide { display: grid; grid-template-columns: minmax(300px, .82fr) minmax(380px, 1.18fr); gap: clamp(24px, 5vw, 68px); align-items: stretch; }
+.workspace-guide__rail { overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: white; box-shadow: 0 20px 48px rgba(14, 59, 95, .07); }
+.workspace-guide__brand { display: grid; gap: 7px; padding: 27px 28px 23px; border-bottom: 1px solid var(--line); }
+.workspace-guide__brand strong { color: var(--navy); font-size: 23px; }
+.workspace-guide__brand span { color: #9aa8b2; font-size: 14px; }
+.workspace-guide__nav { display: grid; padding: 12px; }
+.workspace-guide__nav a { display: grid; grid-template-columns: 112px 1fr; gap: 16px; align-items: center; padding: 16px; border-radius: 13px; color: var(--ink); text-decoration: none; }
+.workspace-guide__nav a + a { margin-top: 3px; }
+.workspace-guide__nav a:hover, .workspace-guide__nav a.is-active { background: var(--mist); }
+.workspace-guide__nav a.is-active > span::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: #8c6a31; vertical-align: 2px; }
+.workspace-guide__nav span { font-weight: 780; }
+.workspace-guide__nav small { color: var(--muted); font-size: 12px; line-height: 1.55; }
+.workspace-guide__notes { padding: clamp(28px, 4vw, 46px); border-radius: 22px; background: var(--navy); color: white; }
+.workspace-guide__notes h3 { margin: 15px 0 12px; color: white; font-size: clamp(26px, 3vw, 36px); line-height: 1.25; letter-spacing: -.035em; }
+.workspace-guide__notes > p { margin: 0; color: #d5e0e7; line-height: 1.85; }
+.workspace-guide__notes ol { display: grid; gap: 0; padding: 0; margin: 28px 0 0; list-style: none; border-top: 1px solid rgba(255,255,255,.15); }
+.workspace-guide__notes li { display: flex; justify-content: space-between; gap: 20px; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,.15); }
+.workspace-guide__notes li b { font-size: 13px; }
+.workspace-guide__notes li span { color: #c9d8e2; font-size: 12px; text-align: right; }
 
 @media (max-width: 900px) {
   nav { display: none; }
@@ -303,6 +322,7 @@ nav a[href="/methodology"] { padding-bottom: 5px; border-bottom: 2px solid #a87c
   .dimension-grid, .numbered-grid, .comparison-grid, .principle-grid, .myth-grid, .evidence-grid, .diagnosis-grid, .related-grid, .report-reading-grid { grid-template-columns: 1fr; }
   .reading-order { grid-template-columns: repeat(2, 1fr); }
   .bottom-cta { align-items: flex-start; flex-direction: column; }
+  .workspace-guide { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
@@ -337,6 +357,9 @@ nav a[href="/methodology"] { padding-bottom: 5px; border-bottom: 2px solid #a87c
   .bottom-cta { padding: 32px 25px; }
   .bottom-cta .button { width: 100%; }
   .tutorial-option-action .button { width: 100%; }
+  .workspace-guide__nav a { grid-template-columns: 1fr; gap: 5px; }
+  .workspace-guide__notes li { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .workspace-guide__notes li span { text-align: left; }
   .guide-grid { grid-template-columns: 1fr; }
   .guide-card, .related-card { padding: 22px; }
 }

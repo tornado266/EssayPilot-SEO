@@ -118,4 +118,10 @@ test("methodology keeps the six-step core and exposes optional expression practi
   assert.match(html, /完成主流程后，还可以继续做两件事/);
   assert.match(html, /打开表达库/);
   assert.match(html, /\?page=growth/);
+  for (const label of ["学习首页", "写作批改", "批改报告", "专项训练", "学习档案"]) {
+    assert.match(html, new RegExp(label));
+  }
+  for (const page of ["home", "write", "report", "training", "growth"]) {
+    assert.match(html, new RegExp(`\\?page=${page}`));
+  }
 });

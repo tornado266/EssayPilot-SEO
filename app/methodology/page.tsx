@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BottomCta, ContentHero, ContentSection } from "../_components/content-page";
 
 const canonicalUrl = "https://essaypilot.cn/methodology";
+const expressionLibraryUrl = "https://xbz4ydgw2t6cm2ytkh79vq.streamlit.app/?page=growth";
 
 export const metadata: Metadata = {
   title: "EssayPilot新手教程｜六步完成作文批改与二稿训练",
@@ -55,6 +56,26 @@ export default function MethodologyPage() {
             </li>
           ))}
         </ol>
+      </ContentSection>
+
+      <ContentSection kicker="可选复习" title="完成主流程后，还可以继续做两件事" muted>
+        <div className="related-grid related-grid-two">
+          <article className="related-card">
+            <span>学习档案</span>
+            <h3>复习自己的错题</h3>
+            <p>批改中的典型句子会进入学习档案，方便以后继续检查和复习。</p>
+          </article>
+          <article className="related-card">
+            <span>表达库</span>
+            <h3>练习可迁移表达</h3>
+            <p>从本篇作文或题材精选中选 1 个表达，用自己的意思造句，并在下一篇作文中再次使用。</p>
+          </article>
+        </div>
+        <div className="tutorial-option-action">
+          <a className="button button-secondary" href={expressionLibraryUrl} target="_blank" rel="noreferrer">
+            打开表达库 <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </ContentSection>
 
       <ContentSection kicker="报告阅读顺序" title="报告生成后，只按这个顺序看。" muted>

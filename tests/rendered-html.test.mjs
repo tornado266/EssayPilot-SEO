@@ -99,3 +99,23 @@ test("new routes render visible content and one H1", async () => {
     assert.match(html, /application\/ld\+json/);
   }
 });
+
+test("methodology keeps the six-step core and exposes optional expression practice", async () => {
+  const source = await readFile("app/methodology/page.tsx", "utf8");
+  for (const step of ["01", "02", "03", "04", "05", "06"]) {
+    assert.ok(source.includes(`["${step}"`), `tutorial step ${step} is missing`);
+  }
+  assert.ok(!source.includes('["07"'), "expression practice must not become a seventh step");
+  assert.ok(source.includes("完成主流程后，还可以继续做两件事"));
+  assert.ok(source.includes("复习自己的错题"));
+  assert.ok(source.includes("练习可迁移表达"));
+  assert.ok(source.includes("?page=growth"));
+  assert.ok(!source.includes("语料库"));
+
+  const response = await renderRoute("/methodology");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /完成主流程后，还可以继续做两件事/);
+  assert.match(html, /打开表达库/);
+  assert.match(html, /\?page=growth/);
+});

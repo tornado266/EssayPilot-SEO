@@ -57,10 +57,7 @@ export default function Home() {
       <section className="hero shell">
         <div className="hero-copy">
           <p className="eyebrow">IELTS Writing Task 2 · 二稿训练</p>
-          <h1>
-            不是替你写，
-            <span>陪你把这一篇改好。</span>
-          </h1>
+          <h1>EssayPilot｜雅思写作训练与二稿提升</h1>
           <p className="hero-lead">
             EssayPilot 将四项评分反馈、逐句修改和二稿对比放进同一个训练流程，
             帮你看见问题，也真正完成修改。

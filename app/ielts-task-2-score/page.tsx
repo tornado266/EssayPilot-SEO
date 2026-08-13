@@ -1,13 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { BottomCta, ContentHero, ContentSection } from "../_components/content-page";
+import { pageMetadata } from "../_lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: "雅思作文评分｜Task 2四项分数怎么看",
-  description:
-    "EssayPilot 雅思写作训练指南：解释 Task 2 的 TR、CC、LR、GRA 四项评分，以及总分相同的作文为何需要不同修改方案。",
-  alternates: { canonical: "/ielts-task-2-score" },
-};
+export const metadata = pageMetadata(
+  "雅思作文评分｜Task 2四项分数怎么看",
+  "EssayPilot 雅思写作训练指南：解释 Task 2 的 TR、CC、LR、GRA 四项评分，以及总分相同的作文为何需要不同修改方案。",
+  "/ielts-task-2-score",
+);
 
 export default function Task2ScorePage() {
   return (

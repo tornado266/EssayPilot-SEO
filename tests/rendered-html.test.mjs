@@ -113,9 +113,11 @@ test("every public page is indexable, canonical, branded, and internally reachab
     const title = html.match(/<title>(.*?)<\/title>/i)?.[1] ?? "";
     const description = html.match(/<meta name="description" content="([^"]+)"/i)?.[1] ?? "";
     const canonical = html.match(/<link rel="canonical" href="([^"]+)"/i)?.[1] ?? "";
+    const ogUrl = html.match(/<meta property="og:url" content="([^"]+)"/i)?.[1] ?? "";
     assert.ok(title.includes("EssayPilot"), `${route} title must include EssayPilot`);
     assert.ok(title.includes("雅思写作训练") || description.includes("雅思写作训练"), `${route} must include the fixed brand description`);
     assert.equal(canonical, `https://essaypilot.cn${route}`, `${route} canonical mismatch`);
+    assert.equal(ogUrl, `https://essaypilot.cn${route}`, `${route} Open Graph URL mismatch`);
     assert.equal((html.match(/<h1\b/gi) ?? []).length, 1, `${route} must have one H1`);
     assert.doesNotMatch(html, /noindex/i, `${route} must be indexable`);
     assert.ok(!titles.has(title), `${route} title must be unique`);
@@ -135,9 +137,9 @@ test("every public page is indexable, canonical, branded, and internally reachab
 test("new content pages expose complete SEO contracts", async () => {
   for (const page of contentPages) {
     const source = await readFile(page.file, "utf8");
-    assert.ok(source.includes(`title: "${page.title}"`));
-    assert.match(source, /description:\s*[\"']/);
-    assert.ok(source.includes(`canonical: "${page.route}"`));
+    assert.ok(source.includes(`"${page.title}"`));
+    assert.ok(source.includes(`"${page.route}"`));
+    assert.ok(source.includes("pageMetadata("));
     assert.ok(source.includes('"@type": "Article"'));
     assert.ok(source.includes('"@type": "BreadcrumbList"'));
     assert.ok(source.includes('updated="2026年8月"'));

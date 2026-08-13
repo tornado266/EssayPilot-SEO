@@ -1,13 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { BottomCta, ContentHero, ContentSection } from "../../_components/content-page";
+import { pageMetadata } from "../../_lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: "雅思作文6分到7分｜真实二稿训练案例",
-  description:
-    "EssayPilot 雅思写作训练案例：通过 Task 2 第一稿与第二稿对比，理解如何补足论证、改善衔接和语言准确性；不承诺提分结果。",
-  alternates: { canonical: "/examples/band-6-to-7" },
-};
+export const metadata = pageMetadata(
+  "雅思作文6分到7分｜真实二稿训练案例",
+  "EssayPilot 雅思写作训练案例：通过 Task 2 第一稿与第二稿对比，理解如何补足论证、改善衔接和语言准确性；不承诺提分结果。",
+  "/examples/band-6-to-7",
+);
 
 export default function BandExamplePage() {
   return (

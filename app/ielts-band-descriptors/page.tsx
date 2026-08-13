@@ -1,13 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { BottomCta, ContentHero, ContentSection } from "../_components/content-page";
+import { pageMetadata } from "../_lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: "IELTS Writing Task 2评分标准解析",
-  description:
-    "EssayPilot 雅思写作训练指南：用中文理解 Task 2 的 TR、CC、LR、GRA 公开评分标准，以及5.5至7分阶段的能力差异。",
-  alternates: { canonical: "/ielts-band-descriptors" },
-};
+export const metadata = pageMetadata(
+  "IELTS Writing Task 2评分标准解析",
+  "EssayPilot 雅思写作训练指南：用中文理解 Task 2 的 TR、CC、LR、GRA 公开评分标准，以及5.5至7分阶段的能力差异。",
+  "/ielts-band-descriptors",
+);
 
 const bands = [
   ["5.5阶段", "能表达立场，但发展不均", "观点可能相关却缺少充分解释；结构基本可见，但语言错误和不自然表达仍会打断阅读。"],

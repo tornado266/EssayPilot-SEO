@@ -1,15 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { BottomCta, ContentHero, ContentSection } from "../../_components/content-page";
+import { pageMetadata } from "../../_lib/page-metadata";
 
 const canonicalUrl = "https://essaypilot.cn/task-2/coherence-cohesion";
 
-export const metadata: Metadata = {
-  title: "IELTS Coherence and Cohesion：雅思作文逻辑与衔接怎么提高？",
-  description:
-    "EssayPilot 雅思写作训练指南：详解 Task 2 的 Coherence and Cohesion，以及段落结构、逻辑顺序、指代和连接如何配合。",
-  alternates: { canonical: "/task-2/coherence-cohesion" },
-};
+export const metadata = pageMetadata(
+  "IELTS Coherence and Cohesion：雅思作文逻辑与衔接怎么提高？",
+  "EssayPilot 雅思写作训练指南：详解 Task 2 的 Coherence and Cohesion，以及段落结构、逻辑顺序、指代和连接如何配合。",
+  "/task-2/coherence-cohesion",
+);
 
 const articleJsonLd = {
   "@context": "https://schema.org",

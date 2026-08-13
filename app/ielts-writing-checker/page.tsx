@@ -1,12 +1,11 @@
-import type { Metadata } from "next";
 import { BottomCta, ContentHero, ContentSection } from "../_components/content-page";
+import { pageMetadata } from "../_lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: "免费雅思作文批改｜IELTS Writing Task 2",
-  description:
-    "EssayPilot 雅思写作训练提供 Task 2 四项反馈、逐句修改建议和中文解释，并引导学习者继续完成第二稿。",
-  alternates: { canonical: "/ielts-writing-checker" },
-};
+export const metadata = pageMetadata(
+  "免费雅思作文批改｜IELTS Writing Task 2",
+  "EssayPilot 雅思写作训练提供 Task 2 四项反馈、逐句修改建议和中文解释，并引导学习者继续完成第二稿。",
+  "/ielts-writing-checker",
+);
 
 const dimensions = [
   ["TR", "Task Response", "题目是否被完整回应，立场是否清晰，主要观点有没有得到充分展开。"],

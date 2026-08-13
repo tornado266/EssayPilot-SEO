@@ -1,15 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { BottomCta, ContentHero, ContentSection } from "../../_components/content-page";
+import { pageMetadata } from "../../_lib/page-metadata";
 
 const canonicalUrl = "https://essaypilot.cn/guides/ielts-writing-6-to-6-5";
 
-export const metadata: Metadata = {
-  title: "雅思写作6分到6.5分：应该优先修改哪三个问题？",
-  description:
-    "EssayPilot 雅思写作训练指南：从论证展开、段落推进和重复语言错误三个瓶颈出发，说明雅思写作6分到6.5分应先改什么。",
-  alternates: { canonical: "/guides/ielts-writing-6-to-6-5" },
-};
+export const metadata = pageMetadata(
+  "雅思写作6分到6.5分：应该优先修改哪三个问题？",
+  "EssayPilot 雅思写作训练指南：从论证展开、段落推进和重复语言错误三个瓶颈出发，说明雅思写作6分到6.5分应先改什么。",
+  "/guides/ielts-writing-6-to-6-5",
+);
 
 const articleJsonLd = {
   "@context": "https://schema.org",

@@ -1,15 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { BottomCta, ContentHero, ContentSection } from "../../_components/content-page";
+import { pageMetadata } from "../../_lib/page-metadata";
 
 const canonicalUrl = "https://essaypilot.cn/task-2/task-response";
 
-export const metadata: Metadata = {
-  title: "IELTS Task Response评分标准：6分和7分差在哪里？",
-  description:
-    "EssayPilot 雅思写作训练指南：详解 Task 2 的 Task Response，说明如何完整回应题目、保持立场并充分展开观点。",
-  alternates: { canonical: "/task-2/task-response" },
-};
+export const metadata = pageMetadata(
+  "IELTS Task Response评分标准：6分和7分差在哪里？",
+  "EssayPilot 雅思写作训练指南：详解 Task 2 的 Task Response，说明如何完整回应题目、保持立场并充分展开观点。",
+  "/task-2/task-response",
+);
 
 const articleJsonLd = {
   "@context": "https://schema.org",

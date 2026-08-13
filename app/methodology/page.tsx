@@ -1,17 +1,16 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { BottomCta, ContentHero, ContentSection } from "../_components/content-page";
+import { pageMetadata } from "../_lib/page-metadata";
 import { WorkspaceGuide } from "./workspace-guide";
 
 const canonicalUrl = "https://essaypilot.cn/methodology";
 const expressionLibraryUrl = "https://xbz4ydgw2t6cm2ytkh79vq.streamlit.app/?page=growth";
 
-export const metadata: Metadata = {
-  title: "EssayPilot新手教程｜六步完成作文批改与二稿训练",
-  description:
-    "EssayPilot 雅思写作训练新手教程：准备题目和初稿、提交批改、阅读报告、完成专项训练、写第二稿并复盘。",
-  alternates: { canonical: "/methodology" },
-};
+export const metadata = pageMetadata(
+  "EssayPilot新手教程｜六步完成作文批改与二稿训练",
+  "EssayPilot 雅思写作训练新手教程：准备题目和初稿、提交批改、阅读报告、完成专项训练、写第二稿并复盘。",
+  "/methodology",
+);
 
 const tutorialSteps = [
   ["01", "准备题目和初稿", "准备完整的 IELTS Task 2 题目和一篇独立完成的作文。保留原来的段落、拼写和语法，不要提前润色。"],

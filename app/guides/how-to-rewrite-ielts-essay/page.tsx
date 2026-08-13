@@ -1,15 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { BottomCta, ContentHero, ContentSection } from "../../_components/content-page";
+import { pageMetadata } from "../../_lib/page-metadata";
 
 const canonicalUrl = "https://essaypilot.cn/guides/how-to-rewrite-ielts-essay";
 
-export const metadata: Metadata = {
-  title: "雅思作文二稿怎么改：从反馈到重写的完整步骤",
-  description:
-    "EssayPilot 雅思写作训练指南：按核对题目、筛选问题、补全论证、独立完成二稿和两稿复盘五步，把反馈转成 Task 2 训练。",
-  alternates: { canonical: "/guides/how-to-rewrite-ielts-essay" },
-};
+export const metadata = pageMetadata(
+  "雅思作文二稿怎么改：从反馈到重写的完整步骤",
+  "EssayPilot 雅思写作训练指南：按核对题目、筛选问题、补全论证、独立完成二稿和两稿复盘五步，把反馈转成 Task 2 训练。",
+  "/guides/how-to-rewrite-ielts-essay",
+);
 
 const articleJsonLd = {
   "@context": "https://schema.org",

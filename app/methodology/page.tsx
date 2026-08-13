@@ -2,70 +2,131 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BottomCta, ContentHero, ContentSection } from "../_components/content-page";
 
+const canonicalUrl = "https://essaypilot.cn/methodology";
+
 export const metadata: Metadata = {
-  title: "评分方法、样本与局限",
+  title: "EssayPilot新手教程｜从提交作文到完成二稿",
   description:
-    "了解 EssayPilot 如何参考 IELTS Writing Task 2 公开评分标准组织反馈，以及AI评分的适用范围、不确定性和使用边界。",
+    "第一次使用 EssayPilot？按完整新手教程提交 IELTS Task 2 作文，读懂四项分数与反馈，完成专项训练、第二稿和成长复盘。",
   alternates: { canonical: "/methodology" },
 };
 
+const tutorialSteps = [
+  ["01", "准备题目和完整初稿", "复制完整的 Task 2 题目，并粘贴你独立完成的作文。保留原有段落和换行，不要先让其他工具润色，否则反馈无法准确对应你的真实问题。"],
+  ["02", "提交批改并等待报告", "进入写作批改页，确认题目与作文没有贴反，再开始评分。生成过程中不要反复点击；同一篇作文重复提交不会带来更可靠的结果。"],
+  ["03", "先读总体判断，再看四项", "先确认 Overall 与 TR、CC、LR、GRA 四项分数，再阅读每项的理由和原文证据。分数用于训练定位，不是官方考试成绩。"],
+  ["04", "只抓最优先的问题", "从报告的重点问题开始，不要同时修改所有标注。优先处理偏题、立场不清、论证不足和段落逻辑，再处理反复影响可读性的语言错误。"],
+  ["05", "完成专项训练", "按照报告进入单句或逻辑训练。先自己作答，再查看提示；训练的目的不是记住范文，而是把反馈变成你能重复使用的修改动作。"],
+  ["06", "独立写完第二稿", "回到原题，尽量不照抄示范句，独立重写完整作文。提交第二稿后对照两稿，检查核心问题是否解决、哪些错误仍在重复。"],
+] as const;
+
+const faqs = [
+  ["第一次使用，需要先注册吗？", "你可以先浏览官网并进入训练工具。游客体验、报告保存和后续训练权限以工具页面的实时提示为准；如果希望长期保存学习档案，建议登录账号。"],
+  ["应该提交写完的作文，还是只写一个段落？", "完整评分应提交完整 Task 2 作文和原题。只写一个段落更适合专项练习，不能代表整篇作文的四项表现。"],
+  ["报告内容很多，必须全部改完吗？", "不必。先完成最高优先级问题及其训练，再写第二稿。逐句修改可用于查漏，但不要让局部措辞掩盖更重要的任务回应和逻辑问题。"],
+  ["为什么第二稿要自己重写，而不是直接复制示范？", "只有自己重新组织观点、解释和语言，才能验证是否真正掌握。复制示范可能让文本变漂亮，却无法证明下一篇还能独立做到。"],
+  ["EssayPilot给出的分数能当作真实雅思成绩吗？", "不能。AI评分仅供训练定位，会存在误差和波动，不能替代 IELTS 官方考试、考官评分或教师判断。"],
+] as const;
+
 export default function MethodologyPage() {
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "EssayPilot新手教程：从提交作文到完成二稿",
+    description: "使用 EssayPilot 完成一次 IELTS Writing Task 2 反馈与二稿训练的六个步骤。",
+    url: canonicalUrl,
+    dateModified: "2026-08-13",
+    step: tutorialSteps.map(([, name, text], index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name,
+      text,
+    })),
+  };
+
   return (
     <main>
       <ContentHero
-        eyebrow="评分方法与局限"
-        title="比“看起来很准”更重要的，是说明依据与边界。"
-        intro="EssayPilot 将公开评分标准转化为结构化训练反馈，但任何AI评分都存在不确定性。本页说明系统如何组织判断，以及哪些事情它不能替你确认。"
-        label="带着边界开始使用"
+        eyebrow="第一次使用 EssayPilot"
+        title="从提交作文，到完成第二稿：一份完整新手教程。"
+        intro="最有效的用法不是拿到一个分数就离开，而是按顺序完成：提交初稿、读懂证据、确定一个核心问题、做专项训练、独立写第二稿，再对照两稿复盘。"
+        label="打开训练工具，跟着教程开始"
+        updated="2026年8月"
       />
 
-      <ContentSection kicker="反馈依据" title="从公开标准到可执行修改。">
-        <div className="method-steps">
-          {[
-            ["01", "读取任务与全文", "同时考虑题目要求、立场、段落组织和语言表现，避免只根据局部句子判断。"],
-            ["02", "按四项维度分析", "分别检查 TR、CC、LR、GRA，并保留优势与问题同时存在的可能。"],
-            ["03", "确定优先级", "先反馈最影响任务完成和清晰表达的问题，再处理局部润色。"],
-            ["04", "转为训练动作", "提供修改原因、检查问题和二稿方向，让用户自己完成重写。"],
-          ].map(([index, title, text]) => (
+      <ContentSection kicker="开始前" title="先准备好这三样东西。">
+        <div className="evidence-grid">
+          <article><h3>完整题目</h3><p>包括题目背景和具体写作指令。题目缺失时，系统无法可靠判断是否完整回应任务。</p></article>
+          <article><h3>独立完成的初稿</h3><p>保留真实段落、拼写和语法。不要在提交前用其他工具全面润色，这样才能找到你真正需要练习的问题。</p></article>
+          <article><h3>一次修改时间</h3><p>建议预留时间读报告、完成一个训练并开始二稿。只看分数，不会自动转化成写作能力。</p></article>
+        </div>
+      </ContentSection>
+
+      <ContentSection kicker="完整流程" title="第一次使用，按这六步走。" muted>
+        <div className="method-steps tutorial-steps">
+          {tutorialSteps.map(([index, title, text]) => (
             <article key={index}><span>{index}</span><div><h3>{title}</h3><p>{text}</p></div></article>
           ))}
         </div>
       </ContentSection>
 
-      <ContentSection kicker="证据原则" title="更重视可追溯的样本，而不是样本数量。" muted>
-        <div className="evidence-grid">
-          <article><h3>优先级更高</h3><p>IELTS官方公开样本、完整题目、清晰分数与考官说明，以及能够确认来源的考试写作材料。</p></article>
-          <article><h3>谨慎使用</h3><p>机构批改、众包数据和经过转写的扫描材料。来源或文本质量不清晰时，不直接作为校准结论。</p></article>
-          <article><h3>持续验证</h3><p>通过多篇样本观察系统性偏差，而不是用单篇“猜中分数”证明评分准确。</p></article>
+      <ContentSection kicker="报告怎么读" title="不要从逐句修改开始，先看这四层。">
+        <div className="report-reading-grid">
+          <article><span>1</span><div><h3>Overall 与四项分数</h3><p>用来定位当前表现。TR 看任务回应，CC 看逻辑组织，LR 看词汇使用，GRA 看语法范围与准确性。</p></div></article>
+          <article><span>2</span><div><h3>评分理由与原文证据</h3><p>不要只看结论。检查系统引用的句子是否确实来自你的作文，以及理由是否符合上下文。</p></div></article>
+          <article><span>3</span><div><h3>最高优先级问题</h3><p>这是本轮最该处理的训练目标。先解决一个真正影响分数和可读性的问题，再考虑局部润色。</p></div></article>
+          <article><span>4</span><div><h3>逐句与段落反馈</h3><p>用于理解具体怎么改，但不要机械接受每条建议。修改后仍应保持自己的立场、含义和表达习惯。</p></div></article>
         </div>
       </ContentSection>
 
-      <ContentSection kicker="必须说明的局限" title="AI反馈可以辅助训练，不能代替考官。">
+      <ContentSection kicker="训练与二稿" title="把反馈变成一次能检查结果的修改。" muted>
+        <div className="method-steps">
+          <article><span>A</span><div><h3>先做与核心问题对应的训练</h3><p>如果问题是论证不足，就练“观点—解释—例子—结果”；如果是段落推进混乱，就先重排信息。局部语法错误则放到单句训练和逐句修改中。</p></div></article>
+          <article><span>B</span><div><h3>写二稿时回到原题</h3><p>先重新确认立场和段落任务，再独立重写。不要一边看示范一边逐句替换，否则很难判断你是否真正掌握。</p></div></article>
+          <article><span>C</span><div><h3>对照两稿只问三个问题</h3><p>核心问题解决了吗？相同错误还在重复吗？下一篇最值得继续练什么？把答案带到下一次写作。</p></div></article>
+        </div>
+        <div className="tutorial-action-row">
+          <Link className="button button-secondary" href="/guides/how-to-rewrite-ielts-essay">查看详细二稿指南</Link>
+          <Link className="text-link" href="/examples/band-6-to-7">查看一组初稿与二稿案例 →</Link>
+        </div>
+      </ContentSection>
+
+      <ContentSection kicker="常见误区" title="这些用法会削弱训练效果。">
         <div className="limitation-list">
-          <article><span>01</span><div><h3>分数不是官方成绩</h3><p>模型输出会受到题目理解、文本质量和判断波动影响，应将分数视为参考区间而非确定结果。</p></div></article>
-          <article><span>02</span><div><h3>语言正确不等于论证有效</h3><p>表达流畅的段落仍可能偏题、缺少发展或逻辑薄弱，因此反馈不会只做语法检查。</p></div></article>
-          <article><span>03</span><div><h3>修改建议需要学习者判断</h3><p>用户应保留自己的立场与声音，核对每条建议是否符合原意，而不是机械接受所有改写。</p></div></article>
-          <article><span>04</span><div><h3>不能承诺提分</h3><p>写作进步还取决于练习频率、反馈质量、语言基础和考试现场表现。</p></div></article>
+          <article><span>01</span><div><h3>反复提交同一篇，只为了等更高分</h3><p>模型判断可能波动。更有价值的做法是保留第一次结果，完成修改后再提交真正不同的第二稿。</p></div></article>
+          <article><span>02</span><div><h3>从头到尾照单全收</h3><p>AI也可能误解句意。任何建议都要回到题目、上下文和你的真实立场中核对。</p></div></article>
+          <article><span>03</span><div><h3>只收藏表达，不在作文里使用</h3><p>表达库是复习材料，不是数量目标。优先掌握少量与你常写题材相关、能在新语境中正确使用的表达。</p></div></article>
+          <article><span>04</span><div><h3>把AI分数当成官方预测</h3><p>分数只用于训练定位，不替代考试成绩或人工判断；写作进步也不能由一次评分证明。</p></div></article>
         </div>
       </ContentSection>
 
-      <ContentSection kicker="我们的产品选择" title="训练优先于代写，解释优先于结论。" muted>
-        <blockquote className="method-quote">
-          EssayPilot 希望留下的不是一篇由AI写好的文章，而是用户在下一篇仍能主动调用的判断方法。
-        </blockquote>
+      <ContentSection kicker="常见问题" title="新用户最常问的五个问题。" muted>
+        <div className="faq-list">
+          {faqs.map(([question, answer]) => (
+            <details key={question}>
+              <summary>{question}<span aria-hidden="true">＋</span></summary>
+              <p>{answer}</p>
+            </details>
+          ))}
+        </div>
       </ContentSection>
-      <ContentSection kicker="理解评分维度" title="查看系统判断背后的两项核心标准。">
+
+      <ContentSection kicker="继续了解" title="需要时，再深入看评分与二稿方法。">
         <div className="related-grid related-grid-two">
-          <Link className="related-card" href="/task-2/task-response">
-            <span>Task Response</span><h3>如何判断题目回应与观点发展？</h3><p>了解完整回应、相关观点和有效支持的区别。</p>
+          <Link className="related-card" href="/ielts-task-2-score">
+            <span>读懂评分</span><h3>TR、CC、LR、GRA 四项分数分别看什么？</h3><p>理解报告中的四项判断，不把所有问题都归结为语法。</p>
           </Link>
-          <Link className="related-card" href="/task-2/coherence-cohesion">
-            <span>Coherence &amp; Cohesion</span><h3>如何判断文章是否容易跟随？</h3><p>了解逻辑顺序、分段、指代与衔接的关系。</p>
+          <Link className="related-card" href="/guides/how-to-rewrite-ielts-essay">
+            <span>完成二稿</span><h3>批改以后，怎样独立完成一篇真正的第二稿？</h3><p>按五步流程筛选反馈、补全论证并对照两稿。</p>
           </Link>
         </div>
       </ContentSection>
-      <BottomCta title="了解评分边界，也更有效地使用反馈。" />
+
+      <BottomCta
+        title="准备好题目和初稿，就从第一步开始。"
+        text="完成一次批改后，先处理一个核心问题，再进入专项训练和第二稿。AI反馈仅供训练参考。"
+      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
     </main>
   );
 }
-

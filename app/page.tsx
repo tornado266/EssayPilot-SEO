@@ -75,7 +75,7 @@ export default function Home() {
               免费开始训练 <span aria-hidden="true">↗</span>
             </a>
             <Link className="button button-secondary" href="/methodology">
-              查看评分方法
+              第一次使用？看新手教程
             </Link>
           </div>
           <ul className="trust-row" aria-label="产品特点">

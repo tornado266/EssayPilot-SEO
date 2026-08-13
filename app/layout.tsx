@@ -35,7 +35,7 @@ const navItems = [
   ["免费批改", "/ielts-writing-checker"],
   ["评分解析", "/ielts-task-2-score"],
   ["二稿案例", "/examples/band-6-to-7"],
-  ["方法说明", "/methodology"],
+  ["新手教程", "/methodology"],
 ];
 
 function Header() {
@@ -73,7 +73,7 @@ function Footer() {
         <div className="footer-links">
           <Link href="/ielts-band-descriptors">评分标准</Link>
           <Link href="/examples/band-6-to-7">二稿案例</Link>
-          <Link href="/methodology">评分方法与局限</Link>
+          <Link href="/methodology">新手使用教程</Link>
           <a href={appUrl} target="_blank" rel="noreferrer">进入训练工具 ↗</a>
         </div>
       </div>

@@ -1,18 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BottomCta, ContentHero, ContentSection } from "../_components/content-page";
+import { WorkspaceGuide } from "./workspace-guide";
 
 const canonicalUrl = "https://essaypilot.cn/methodology";
-const appUrl = "https://xbz4ydgw2t6cm2ytkh79vq.streamlit.app/";
 const expressionLibraryUrl = "https://xbz4ydgw2t6cm2ytkh79vq.streamlit.app/?page=growth";
-
-const workspaceSections = [
-  ["学习首页", "查看上一次批改和未完成训练", "home"],
-  ["写作批改", "粘贴题目与作文，生成完整报告", "write"],
-  ["批改报告", "阅读评分、证据和最高优先级问题", "report"],
-  ["专项训练", "完成单句或逻辑练习，再进入第二稿", "training"],
-  ["学习档案", "复习错题、表达和二稿记录", "growth"],
-] as const;
 
 export const metadata: Metadata = {
   title: "EssayPilot新手教程｜六步完成作文批改与二稿训练",
@@ -57,39 +49,7 @@ export default function MethodologyPage() {
       />
 
       <ContentSection kicker="先认清入口" title="左侧五个选项，分别在什么时候使用？" muted>
-        <div className="workspace-guide">
-          <div className="workspace-guide__rail" aria-label="EssayPilot 学习工作台导航示意">
-            <div className="workspace-guide__brand">
-              <strong>EssayPilot</strong>
-              <span>Task 2 学习工作台</span>
-            </div>
-            <div className="workspace-guide__nav" role="navigation" aria-label="训练工具页面说明">
-              {workspaceSections.map(([label, description, page], index) => (
-                <a
-                  className={index === 0 ? "is-active" : ""}
-                  href={`${appUrl}?page=${page}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  key={page}
-                >
-                  <span>{label}</span>
-                  <small>{description}</small>
-                </a>
-              ))}
-            </div>
-          </div>
-          <div className="workspace-guide__notes">
-            <span className="band-label">使用原则</span>
-            <h3>按任务走，不需要逐个页面浏览。</h3>
-            <p>第一次使用时，从“写作批改”开始。报告生成后，依次进入“批改报告”和“专项训练”；完成第二稿后，再到“学习档案”复盘。</p>
-            <ol>
-              <li><b>开始一篇新作文</b><span>进入“写作批改”</span></li>
-              <li><b>报告已经生成</b><span>进入“批改报告”</span></li>
-              <li><b>准备修改问题</b><span>进入“专项训练”</span></li>
-              <li><b>以后回来复习</b><span>进入“学习档案”</span></li>
-            </ol>
-          </div>
-        </div>
+        <WorkspaceGuide />
       </ContentSection>
 
       <ContentSection kicker="完整流程" title="从第一步开始，依次完成。">
@@ -101,26 +61,6 @@ export default function MethodologyPage() {
             </li>
           ))}
         </ol>
-      </ContentSection>
-
-      <ContentSection kicker="可选复习" title="完成主流程后，还可以继续做两件事" muted>
-        <div className="related-grid related-grid-two">
-          <article className="related-card">
-            <span>学习档案</span>
-            <h3>复习自己的错题</h3>
-            <p>批改中的典型句子会进入学习档案，方便以后继续检查和复习。</p>
-          </article>
-          <article className="related-card">
-            <span>表达库</span>
-            <h3>练习可迁移表达</h3>
-            <p>从本篇作文或题材精选中选 1 个表达，用自己的意思造句，并在下一篇作文中再次使用。</p>
-          </article>
-        </div>
-        <div className="tutorial-option-action">
-          <a className="button button-secondary" href={expressionLibraryUrl} target="_blank" rel="noreferrer">
-            打开表达库 <span aria-hidden="true">↗</span>
-          </a>
-        </div>
       </ContentSection>
 
       <ContentSection kicker="报告阅读顺序" title="报告生成后，只按这个顺序看。" muted>
@@ -141,6 +81,26 @@ export default function MethodologyPage() {
           <Link className="related-card" href="/guides/how-to-rewrite-ielts-essay">
             <span>开始写第二稿时</span><h3>如何把反馈落实到二稿？</h3><p>查看更详细的二稿修改步骤。</p>
           </Link>
+        </div>
+      </ContentSection>
+
+      <ContentSection kicker="可选复习" title="完成主流程后，还可以继续做两件事" muted>
+        <div className="related-grid related-grid-two">
+          <article className="related-card">
+            <span>学习档案</span>
+            <h3>复习自己的错题</h3>
+            <p>批改中的典型句子会进入学习档案，方便以后继续检查和复习。</p>
+          </article>
+          <article className="related-card">
+            <span>表达库</span>
+            <h3>练习可迁移表达</h3>
+            <p>从本篇作文或题材精选中选 1 个表达，用自己的意思造句，并在下一篇作文中再次使用。</p>
+          </article>
+        </div>
+        <div className="tutorial-option-action">
+          <a className="button button-secondary" href={expressionLibraryUrl} target="_blank" rel="noreferrer">
+            打开表达库 <span aria-hidden="true">↗</span>
+          </a>
         </div>
       </ContentSection>
 

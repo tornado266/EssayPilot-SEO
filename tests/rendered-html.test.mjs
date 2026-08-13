@@ -121,7 +121,7 @@ test("methodology keeps the six-step core and exposes optional expression practi
   for (const label of ["学习首页", "写作批改", "批改报告", "专项训练", "学习档案"]) {
     assert.match(html, new RegExp(label));
   }
-  for (const page of ["home", "write", "report", "training", "growth"]) {
-    assert.match(html, new RegExp(`\\?page=${page}`));
-  }
+  assert.ok(source.indexOf("报告阅读顺序") < source.indexOf("两个入口"));
+  assert.ok(source.indexOf("两个入口") < source.indexOf("完成主流程后，还可以继续做两件事"));
+  assert.doesNotMatch(html, /\?page=(home|write|report|training)/);
 });

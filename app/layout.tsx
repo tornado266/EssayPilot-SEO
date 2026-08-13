@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BrandMark } from "./_components/brand-mark";
 import "./globals.css";
 
 const appUrl = "https://xbz4ydgw2t6cm2ytkh79vq.streamlit.app/";
@@ -42,7 +43,7 @@ function Header() {
     <header className="site-header">
       <div className="shell header-inner">
         <Link className="brand" href="/" aria-label="EssayPilot 首页">
-          <span className="brand-mark">E</span>
+          <BrandMark />
           <span>EssayPilot</span>
         </Link>
         <nav aria-label="主导航">
@@ -64,7 +65,7 @@ function Footer() {
       <div className="shell footer-grid">
         <div>
           <Link className="brand footer-brand" href="/">
-            <span className="brand-mark">E</span>
+            <BrandMark />
             <span>EssayPilot</span>
           </Link>
           <p>为认真修改每一稿的 IELTS 学习者而做。</p>

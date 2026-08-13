@@ -5,7 +5,7 @@ import { BottomCta, ContentHero, ContentSection } from "../../_components/conten
 export const metadata: Metadata = {
   title: "雅思作文6分到7分｜真实二稿训练案例",
   description:
-    "通过 IELTS Writing Task 2 第一稿与第二稿对比，理解如何补足论证、改善衔接并提高语言准确性。案例用于训练示范，不承诺提分结果。",
+    "EssayPilot 雅思写作训练案例：通过 Task 2 第一稿与第二稿对比，理解如何补足论证、改善衔接和语言准确性；不承诺提分结果。",
   alternates: { canonical: "/examples/band-6-to-7" },
 };
 

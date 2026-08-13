@@ -9,7 +9,7 @@ const expressionLibraryUrl = "https://xbz4ydgw2t6cm2ytkh79vq.streamlit.app/?page
 export const metadata: Metadata = {
   title: "EssayPilot新手教程｜六步完成作文批改与二稿训练",
   description:
-    "EssayPilot新手使用流程：准备题目和初稿、提交批改、阅读报告、完成专项训练、写第二稿并复盘。",
+    "EssayPilot 雅思写作训练新手教程：准备题目和初稿、提交批改、阅读报告、完成专项训练、写第二稿并复盘。",
   alternates: { canonical: "/methodology" },
 };
 

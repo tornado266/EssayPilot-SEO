@@ -4,7 +4,7 @@ import { BottomCta, ContentHero, ContentSection } from "../_components/content-p
 export const metadata: Metadata = {
   title: "免费雅思作文批改｜IELTS Writing Task 2",
   description:
-    "免费体验 EssayPilot 雅思作文批改：查看 TR、CC、LR、GRA 四项反馈、逐句修改建议和中文解释，并继续完成第二稿。",
+    "EssayPilot 雅思写作训练提供 Task 2 四项反馈、逐句修改建议和中文解释，并引导学习者继续完成第二稿。",
   alternates: { canonical: "/ielts-writing-checker" },
 };
 

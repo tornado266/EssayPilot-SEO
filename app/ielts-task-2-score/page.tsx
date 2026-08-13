@@ -5,7 +5,7 @@ import { BottomCta, ContentHero, ContentSection } from "../_components/content-p
 export const metadata: Metadata = {
   title: "雅思作文评分｜Task 2四项分数怎么看",
   description:
-    "解释 IELTS Writing Task 2 的 TR、CC、LR、GRA 四项评分如何理解，以及为什么总分相同的作文可能需要完全不同的修改方案。",
+    "EssayPilot 雅思写作训练指南：解释 Task 2 的 TR、CC、LR、GRA 四项评分，以及总分相同的作文为何需要不同修改方案。",
   alternates: { canonical: "/ielts-task-2-score" },
 };
 

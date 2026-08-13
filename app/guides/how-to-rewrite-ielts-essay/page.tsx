@@ -7,7 +7,7 @@ const canonicalUrl = "https://essaypilot.cn/guides/how-to-rewrite-ielts-essay";
 export const metadata: Metadata = {
   title: "雅思作文二稿怎么改：从反馈到重写的完整步骤",
   description:
-    "雅思作文批改后怎么改？按核对题目、筛选优先问题、补全论证、独立完成二稿和两稿复盘五步，把AI反馈转成真正的Task 2训练。",
+    "EssayPilot 雅思写作训练指南：按核对题目、筛选问题、补全论证、独立完成二稿和两稿复盘五步，把反馈转成 Task 2 训练。",
   alternates: { canonical: "/guides/how-to-rewrite-ielts-essay" },
 };
 

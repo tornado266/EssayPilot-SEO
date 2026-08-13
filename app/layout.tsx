@@ -8,12 +8,14 @@ const appUrl = "https://xbz4ydgw2t6cm2ytkh79vq.streamlit.app/";
 export const metadata: Metadata = {
   metadataBase: new URL("https://essaypilot.cn"),
   title: {
-    default: "EssayPilot｜免费雅思作文批改与二稿训练",
-    template: "%s｜EssayPilot",
+    default: "EssayPilot｜雅思写作训练与二稿提升",
+    template: "%s｜EssayPilot雅思写作训练",
   },
   description:
-    "EssayPilot 提供 IELTS Writing Task 2 四项评分反馈、逐句修改、中文解释与二稿对比，帮助学习者完成可执行的雅思作文训练。",
+    "EssayPilot 是面向 IELTS Writing Task 2 的雅思写作训练工具，提供作文诊断、原文证据、专项练习与二稿对比，帮助学习者从作文诊断走到二稿提升。",
   keywords: [
+    "EssayPilot",
+    "雅思写作训练",
     "雅思作文批改",
     "IELTS Writing Task 2",
     "雅思作文评分",
@@ -23,11 +25,18 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "zh_CN",
+    url: "https://essaypilot.cn/",
     siteName: "EssayPilot",
-    title: "EssayPilot｜免费雅思作文批改与二稿训练",
-    description: "从第一稿到第二稿，把每一次批改真正变成写作能力。",
+    title: "EssayPilot｜雅思写作训练与二稿提升",
+    description: "从作文诊断到二稿提升，把每一次反馈变成真正的雅思写作训练。",
+    images: [{ url: "/og.png", width: 1731, height: 909, alt: "EssayPilot 雅思写作训练｜从作文诊断到二稿提升" }],
   },
-  other: { "codex-preview": "development" },
+  twitter: {
+    card: "summary_large_image",
+    title: "EssayPilot｜雅思写作训练与二稿提升",
+    description: "从作文诊断到二稿提升，把每一次反馈变成真正的雅思写作训练。",
+    images: ["/og.png"],
+  },
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
 };
 
@@ -86,24 +95,12 @@ function Footer() {
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const organizationJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "EssayPilot",
-    url: "https://essaypilot.cn",
-    description: "面向 IELTS Writing Task 2 的作文批改与二稿训练工具。",
-  };
-
   return (
     <html lang="zh-CN">
       <body>
         <Header />
         {children}
         <Footer />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
       </body>
     </html>
   );

@@ -5,7 +5,7 @@ import { BottomCta, ContentHero, ContentSection } from "../_components/content-p
 export const metadata: Metadata = {
   title: "IELTS Writing Task 2评分标准解析",
   description:
-    "用中文理解 IELTS Writing Task 2 的 TR、CC、LR、GRA 公开评分标准，以及5.5、6、6.5、7分阶段常见的能力差异。",
+    "EssayPilot 雅思写作训练指南：用中文理解 Task 2 的 TR、CC、LR、GRA 公开评分标准，以及5.5至7分阶段的能力差异。",
   alternates: { canonical: "/ielts-band-descriptors" },
 };
 

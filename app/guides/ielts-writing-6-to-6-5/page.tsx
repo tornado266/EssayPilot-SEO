@@ -7,7 +7,7 @@ const canonicalUrl = "https://essaypilot.cn/guides/ielts-writing-6-to-6-5";
 export const metadata: Metadata = {
   title: "雅思写作6分到6.5分：应该优先修改哪三个问题？",
   description:
-    "雅思写作6分到6.5分应先改什么？从论证展开、段落推进和重复语言错误三个瓶颈出发，提供示例、自查方法与一次可执行的Task 2训练流程。",
+    "EssayPilot 雅思写作训练指南：从论证展开、段落推进和重复语言错误三个瓶颈出发，说明雅思写作6分到6.5分应先改什么。",
   alternates: { canonical: "/guides/ielts-writing-6-to-6-5" },
 };
 

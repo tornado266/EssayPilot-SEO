@@ -2,10 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { readFile } from "node:fs/promises";
 
-const developmentPreviewMeta =
-  /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
-
-test("renders development preview metadata", async () => {
+test("homepage exposes stable brand metadata and structured data", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
@@ -30,7 +27,32 @@ test("renders development preview metadata", async () => {
     response.headers.get("content-type") ?? "",
     /^text\/html\b/i,
   );
-  assert.match(await response.text(), developmentPreviewMeta);
+  const html = await response.text();
+  assert.match(html, /<title>EssayPilot｜雅思写作训练与二稿提升<\/title>/);
+  assert.match(html, /<link rel="canonical" href="https:\/\/essaypilot\.cn\/"/);
+  assert.match(html, /property="og:image" content="https:\/\/essaypilot\.cn\/og\.png"/);
+  assert.match(html, /"@type":"WebSite"/);
+  assert.match(html, /"@type":"SoftwareApplication"/);
+  assert.match(html, /雅思写作训练/);
+  assert.doesNotMatch(html, /codex-preview/);
+});
+
+test("robots, sitemap, and 404 have valid search contracts", async () => {
+  const robots = await renderRoute("/robots.txt");
+  assert.equal(robots.status, 200);
+  assert.match(await robots.text(), /Sitemap: https:\/\/essaypilot\.cn\/sitemap\.xml/);
+
+  const sitemap = await renderRoute("/sitemap.xml");
+  assert.equal(sitemap.status, 200);
+  const xml = await sitemap.text();
+  assert.match(xml, /https:\/\/essaypilot\.cn\//);
+  assert.doesNotMatch(xml, /streamlit\.app/);
+
+  const missing = await renderRoute("/not-a-real-page-search-bridge");
+  assert.equal(missing.status, 404);
+  const missingHtml = await missing.text();
+  assert.match(missingHtml, /页面未找到/);
+  assert.match(missingHtml, /noindex/);
 });
 
 async function renderRoute(route) {
@@ -66,6 +88,49 @@ const contentPages = [
     title: "雅思作文二稿怎么改：从反馈到重写的完整步骤",
   },
 ];
+
+const publicRoutes = [
+  "/",
+  "/ielts-writing-checker",
+  "/ielts-task-2-score",
+  "/ielts-band-descriptors",
+  "/examples/band-6-to-7",
+  "/methodology",
+  "/task-2/task-response",
+  "/task-2/coherence-cohesion",
+  "/guides/ielts-writing-6-to-6-5",
+  "/guides/how-to-rewrite-ielts-essay",
+];
+
+test("every public page is indexable, canonical, branded, and internally reachable", async () => {
+  const titles = new Set();
+  const internalLinks = new Set();
+
+  for (const route of publicRoutes) {
+    const response = await renderRoute(route);
+    assert.equal(response.status, 200, route);
+    const html = await response.text();
+    const title = html.match(/<title>(.*?)<\/title>/i)?.[1] ?? "";
+    const description = html.match(/<meta name="description" content="([^"]+)"/i)?.[1] ?? "";
+    const canonical = html.match(/<link rel="canonical" href="([^"]+)"/i)?.[1] ?? "";
+    assert.ok(title.includes("EssayPilot"), `${route} title must include EssayPilot`);
+    assert.ok(title.includes("雅思写作训练") || description.includes("雅思写作训练"), `${route} must include the fixed brand description`);
+    assert.equal(canonical, `https://essaypilot.cn${route}`, `${route} canonical mismatch`);
+    assert.equal((html.match(/<h1\b/gi) ?? []).length, 1, `${route} must have one H1`);
+    assert.doesNotMatch(html, /noindex/i, `${route} must be indexable`);
+    assert.ok(!titles.has(title), `${route} title must be unique`);
+    titles.add(title);
+    for (const match of html.matchAll(/href="(\/[^"]*)"/g)) {
+      const href = match[1].split("#")[0].split("?")[0];
+      if (href && !href.startsWith("/_") && !href.includes(".")) internalLinks.add(href);
+    }
+  }
+
+  for (const href of internalLinks) {
+    const response = await renderRoute(href);
+    assert.equal(response.status, 200, `internal link ${href} must resolve`);
+  }
+});
 
 test("new content pages expose complete SEO contracts", async () => {
   for (const page of contentPages) {

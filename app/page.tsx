@@ -1,5 +1,40 @@
 import Link from "next/link";
 
+const homeJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://essaypilot.cn/#organization",
+      name: "EssayPilot",
+      url: "https://essaypilot.cn/",
+      sameAs: ["https://github.com/tornado266/EssayPilot"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://essaypilot.cn/#website",
+      url: "https://essaypilot.cn/",
+      name: "EssayPilot",
+      alternateName: "EssayPilot 雅思写作训练",
+      description: "从作文诊断到二稿提升的 IELTS Writing Task 2 雅思写作训练网站。",
+      inLanguage: "zh-CN",
+      publisher: { "@id": "https://essaypilot.cn/#organization" },
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://essaypilot.cn/#application",
+      name: "EssayPilot",
+      alternateName: "EssayPilot 雅思写作训练",
+      applicationCategory: "EducationalApplication",
+      operatingSystem: "Web",
+      url: "https://xbz4ydgw2t6cm2ytkh79vq.streamlit.app/",
+      mainEntityOfPage: { "@id": "https://essaypilot.cn/#website" },
+      description: "面向 IELTS Writing Task 2 的作文诊断、专项练习与二稿对比工具。",
+      provider: { "@id": "https://essaypilot.cn/#organization" },
+    },
+  ],
+};
+
 const features = [
   {
     index: "01",
@@ -223,6 +258,7 @@ export default function Home() {
           </a>
         </div>
       </section>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }} />
     </main>
   );
 }

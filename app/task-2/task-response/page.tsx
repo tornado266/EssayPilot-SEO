@@ -7,7 +7,7 @@ const canonicalUrl = "https://essaypilot.cn/task-2/task-response";
 export const metadata: Metadata = {
   title: "IELTS Task Response评分标准：6分和7分差在哪里？",
   description:
-    "详解 IELTS Writing Task 2 的 Task Response：如何回应全部题目、保持清晰立场、充分展开观点，并对比 TR 5.5、6、6.5、7分阶段。",
+    "EssayPilot 雅思写作训练指南：详解 Task 2 的 Task Response，说明如何完整回应题目、保持立场并充分展开观点。",
   alternates: { canonical: "/task-2/task-response" },
 };
 

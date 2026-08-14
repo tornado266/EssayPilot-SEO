@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 const routes = [
   ["", "2026-08-14"],
   ["/ielts-writing-checker", "2026-08-14"],

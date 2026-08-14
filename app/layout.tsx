@@ -38,6 +38,9 @@ export const metadata: Metadata = {
     images: ["/og.png"],
   },
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
+  other: {
+    "baidu-site-verification": "codeva-TmHgSGcRPz",
+  },
 };
 
 const navItems = [

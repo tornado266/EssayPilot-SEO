@@ -55,6 +55,19 @@ test("robots, sitemap, and 404 have valid search contracts", async () => {
   assert.match(missingHtml, /noindex/);
 });
 
+test("Baidu verification endpoints return direct, stable responses", async () => {
+  const verification = await renderRoute("/baidu_verify_codeva-TmHgSGcRPz.html");
+  assert.equal(verification.status, 200);
+  assert.equal(verification.headers.get("location"), null);
+  assert.equal(await verification.text(), "de518053f34909a17cec8d71e72ccbd6");
+
+  const homepage = await renderRoute("/");
+  assert.match(
+    await homepage.text(),
+    /<meta name="baidu-site-verification" content="codeva-TmHgSGcRPz"/,
+  );
+});
+
 async function renderRoute(route) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("route-test", `${route}-${process.pid}-${Date.now()}`);

@@ -43,9 +43,23 @@ a { color: inherit; text-decoration: none; }
   filter: drop-shadow(0 7px 10px rgba(7, 27, 46, .17));
 }
 nav { display: flex; gap: 28px; margin-left: auto; }
-nav a { color: #3d586b; font-size: 14px; font-weight: 580; transition: color .2s ease; }
+nav a { color: #3d586b; font-size: 14px; font-weight: 580; transition: color .2s ease, transform .2s ease, box-shadow .2s ease; }
 nav a:hover { color: var(--blue); }
-nav a[href="/methodology"] { padding-bottom: 5px; border-bottom: 2px solid #a87c32; color: var(--navy); font-weight: 760; }
+nav .nav-tutorial-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: -7px -11px;
+  padding: 7px 11px;
+  border: 1px solid #dec58f;
+  border-radius: 999px;
+  background: #fff8e9;
+  color: #694915;
+  box-shadow: 0 7px 18px rgba(118, 81, 22, .1);
+  font-weight: 760;
+}
+nav .nav-tutorial-link:hover { color: #694915; transform: translateY(-1px); box-shadow: 0 9px 22px rgba(118, 81, 22, .15); }
+.nav-tutorial-badge { padding: 2px 6px; border-radius: 999px; background: #9a6d25; color: white; font-size: 9px; font-weight: 820; letter-spacing: .05em; }
 .header-cta { padding: 10px 16px; border-radius: 12px; background: var(--blue); color: white; box-shadow: 0 10px 22px rgba(23, 105, 170, .16); font-size: 14px; font-weight: 650; }
 
 .hero {
@@ -74,7 +88,28 @@ nav a[href="/methodology"] { padding-bottom: 5px; border-bottom: 2px solid #a87c
 .hero h1 { margin: 0; max-width: 650px; font-size: clamp(47px, 5vw, 70px); line-height: 1.12; letter-spacing: -.055em; font-weight: 790; }
 .hero h1 span { color: var(--blue); }
 .hero-lead { max-width: 620px; margin: 27px 0 0; color: var(--muted); font-size: 18px; line-height: 1.9; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 34px; }
+.tutorial-spotlight {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+  max-width: 600px;
+  margin-top: 30px;
+  padding: 15px 17px;
+  border: 1px solid #dec58f;
+  border-radius: 16px;
+  background: linear-gradient(120deg, #fffaf0, #fff5dc);
+  box-shadow: 0 12px 30px rgba(118, 81, 22, .1);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.tutorial-spotlight:hover { transform: translateY(-2px); border-color: #c99f50; box-shadow: 0 16px 34px rgba(118, 81, 22, .15); }
+.tutorial-spotlight:focus-visible, .nav-tutorial-link:focus-visible { outline: 3px solid rgba(23, 105, 170, .3); outline-offset: 3px; }
+.tutorial-spotlight-badge { padding: 5px 8px; border-radius: 999px; background: #9a6d25; color: white; font-size: 10px; font-weight: 820; letter-spacing: .06em; white-space: nowrap; }
+.tutorial-spotlight-copy { display: grid; gap: 4px; }
+.tutorial-spotlight-copy strong { color: #553b12; font-size: 15px; line-height: 1.4; }
+.tutorial-spotlight-copy small { color: #80683e; font-size: 12px; line-height: 1.55; }
+.tutorial-spotlight-arrow { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: white; color: #8c611e; box-shadow: 0 4px 12px rgba(118, 81, 22, .12); font-size: 18px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 18px; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 0 21px; border-radius: 12px; font-size: 15px; font-weight: 700; transition: transform .2s ease, box-shadow .2s ease; }
 .button:hover { transform: translateY(-2px); }
 .button-primary { color: white; background: var(--blue); box-shadow: 0 10px 22px rgba(23, 105, 170, .18); }
@@ -336,6 +371,10 @@ nav a[href="/methodology"] { padding-bottom: 5px; border-bottom: 2px solid #a87c
   .hero { padding-top: 62px; padding-bottom: 56px; }
   .hero h1 { font-size: 43px; }
   .hero-lead { font-size: 16px; }
+  .tutorial-spotlight { gap: 11px; padding: 14px; }
+  .tutorial-spotlight-copy strong { font-size: 14px; }
+  .tutorial-spotlight-copy small { font-size: 11px; }
+  .tutorial-spotlight-arrow { width: 28px; height: 28px; }
   .button { width: 100%; }
   .trust-row { display: grid; }
   .demo-body { padding: 13px; }

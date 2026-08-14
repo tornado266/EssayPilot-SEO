@@ -60,7 +60,14 @@ function Header() {
         </Link>
         <nav aria-label="主导航">
           {navItems.map(([label, href]) => (
-            <Link href={href} key={href}>{label}</Link>
+            <Link
+              className={href === "/methodology" ? "nav-tutorial-link" : undefined}
+              href={href}
+              key={href}
+            >
+              {href === "/methodology" && <span className="nav-tutorial-badge">新手必看</span>}
+              {label}
+            </Link>
           ))}
         </nav>
         <a className="header-cta" href={appUrl} target="_blank" rel="noreferrer">

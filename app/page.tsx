@@ -97,6 +97,18 @@ export default function Home() {
             EssayPilot 将四项评分反馈、逐句修改和二稿对比放进同一个训练流程，
             帮你看见问题，也真正完成修改。
           </p>
+          <Link
+            className="tutorial-spotlight"
+            href="/methodology"
+            aria-label="新手必看：第一次使用 EssayPilot，先看 2 分钟上手教程"
+          >
+            <span className="tutorial-spotlight-badge">新手必看</span>
+            <span className="tutorial-spotlight-copy">
+              <strong>第一次使用？先看 2 分钟上手教程</strong>
+              <small>从提交初稿到完成二稿，6 步走通完整训练流程</small>
+            </span>
+            <span className="tutorial-spotlight-arrow" aria-hidden="true">→</span>
+          </Link>
           <div className="hero-actions">
             <a
               className="button button-primary"
@@ -106,9 +118,6 @@ export default function Home() {
             >
               免费开始训练 <span aria-hidden="true">↗</span>
             </a>
-            <Link className="button button-secondary" href="/methodology">
-              第一次使用？看新手教程
-            </Link>
           </div>
           <ul className="trust-row" aria-label="产品特点">
             <li>无需生成范文</li>

@@ -37,6 +37,18 @@ test("homepage exposes stable brand metadata and structured data", async () => {
   assert.doesNotMatch(html, /codex-preview/);
 });
 
+test("homepage gives first-time users a prominent tutorial path", async () => {
+  const response = await renderRoute("/");
+  const html = await response.text();
+
+  assert.match(html, /nav-tutorial-link/);
+  assert.match(html, /tutorial-spotlight/);
+  assert.match(html, /新手必看/);
+  assert.match(html, /2 分钟上手教程/);
+  assert.match(html, /6 步走通完整训练流程/);
+  assert.match(html, /href="\/methodology"/);
+});
+
 test("robots, sitemap, and 404 have valid search contracts", async () => {
   const robots = await renderRoute("/robots.txt");
   assert.equal(robots.status, 200);
